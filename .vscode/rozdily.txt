@@ -1,0 +1,48 @@
+To je klasický "moment prozření" každého vývojáře. Ten pocit, kdy kód, který na Macu běží jako hodinky, na Windows vybuchne na první řádce kvůli cestám (backslash vs. lomítko) nebo binárkám v `venv`, je k nezaplacení.
+
+Problém je v tom, že **virtuální prostředí (`venv`, `.venv`) se nikdy nesynchronizuje.** Obsahuje totiž spustitelné soubory specifické pro daný operační systém a absolutní cesty k interpretu ve vašem stroji.
+
+Tady je návod, jak z toho udělat tu slibovanou hračku:
+
+### 1. Zlaté pravidlo: `.gitignore`
+
+Prvním krokem je zajistit, aby GitHub o vašem lokálním virtuálním prostředí vůbec nevěděl.
+
+* V kořenovém adresáři projektu vytvořte soubor `.gitignore` (pokud ho nemáte).
+* Přidejte do něj řádek: `venv/` nebo `.venv/` (podle toho, jak složku pojmenováváte).
+* Tím zajistíte, že se přenáší pouze **kód**, nikoliv **balast** prostředí.
+
+### 2. Standard: `requirements.txt`
+
+Místo složky s knihovnami sdílíte jen jejich seznam.
+
+* **Na Macu (kde kód funguje):** `pip freeze > requirements.txt`
+* **Na PC (po stažení z GitHubu):**
+1. Vytvořte nové prostředí: `python -m venv venv`
+2. Aktivujte ho: `.\venv\Scripts\activate`
+3. Nainstalujte knihovny: `pip install -r requirements.txt`
+
+
+
+### 3. Moderní cesta: Poetry (Doporučuji)
+
+Pokud vás nebaví hlídat `requirements.txt`, zkuste nástroj **Poetry**. Ten vytvoří soubor `pyproject.toml` a `poetry.lock`.
+
+* `poetry.lock` zajistí, že na Macu i PC budete mít **identické verze** všech knihoven včetně jejich závislostí.
+* Poetry se samo postará o to, kde a jak virtuální prostředí na daném systému vytvořit.
+
+### 4. Pozor na cesty v kódu
+
+Pokud v kódu používáte cesty k souborům (např. `open("data\soubor.csv")`), na Macu to selže. Používejte knihovnu **`pathlib`**, která je součástí standardní knihovny Pythonu:
+
+```python
+from pathlib import Path
+
+# Tato cesta bude fungovat na Windows i macOS
+cesta_k_datům = Path("data") / "soubor.csv"
+
+```
+
+---
+
+**Máte v tom projektu nějaké specifické knihovny, které vyžadují kompilaci (např. pro analýzu dat nebo AI), nebo jde o čistý Python?** Můžu vám pomoci nastavit konkrétní `.gitignore` nebo workflow.
