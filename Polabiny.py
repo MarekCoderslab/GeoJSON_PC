@@ -1,7 +1,7 @@
 import streamlit as st
-import matplotlib.pyplot as plt
-from matplotlib.lines import Line2D
-import matplotlib.image as mpimg
+# import matplotlib.pyplot as plt
+# from matplotlib.lines import Line2D
+# import matplotlib.image as mpimg
 
 st.set_page_config(layout="wide")
 
