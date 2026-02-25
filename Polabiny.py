@@ -9,7 +9,8 @@ st.title("Pardubice – Polabiny dle barev")
 st.subheader("GPS souřadnice na osách")
 
 # Cesta k obrázku
-img_path = r"E:\Dydy\Documents\GitHub\GeoJSON_PC\graf_Pardubice_Polabiny.png"
+img_path = "graf_Pardubice_Polabiny.png"
+
 
 # Načtení obrázku
 img = mpimg.imread(img_path)
