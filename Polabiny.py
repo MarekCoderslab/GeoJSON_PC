@@ -31,3 +31,9 @@ for col, color, label in zip(cols, colors, labels):
         unsafe_allow_html=True
     )
 
+st.markdown(
+    "<div style='text-align:center;'>"
+    "<a href='mailto:marek.coderslab@gmail.com'>Created: marek.coderslab@gmail.com</a>"
+    "</div>",
+    unsafe_allow_html=True
+)
