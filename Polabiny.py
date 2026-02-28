@@ -32,7 +32,7 @@ for col, color, label in zip(cols, colors, labels):
     )
 
 st.markdown(
-    "<div style='text-align:center; margin-top: 30px;'>"
+    "<div style='text-align:center; margin-top: 50px;'>"
     "<a href='mailto:marek.coderslab@gmail.com'>Created: marek.coderslab@gmail.com</a>"
     "</div>",
     unsafe_allow_html=True
