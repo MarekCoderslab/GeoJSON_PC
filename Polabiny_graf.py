@@ -49,3 +49,11 @@ fig.savefig(output_path, dpi=600, bbox_inches='tight')
 
 # Zobrazení v Streamlitu
 st.pyplot(fig)
+
+st.markdown("---")
+st.markdown(
+    "<div style='text-align:center;'>"
+    "<a href='mailto:marek.coderslab@gmail.com'>Created: marek.coderslab@gmail.com</a>"
+    "</div>",
+    unsafe_allow_html=True
+)
